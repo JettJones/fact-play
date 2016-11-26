@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    h1= 'Add a subject'
+    form#formAddSub(name="adduser",method="post",action="/addsubject")
+        input#inputTitle(type="text", placeholder="title", name="title")
+        input#inputDescription(type="text", placeholder="description", name="description")
+        button#submitSubject(type="submit") submit
+    h1.
+        Subject List
+    #subjectList
+        ul
+            each subject, i in list
+                li #{subject.title}:#{subject.description}
+    #subjectDetail
+      h2 Subject Information
+      p
+        strong Title:
+        | <span id='subjectTitle'></span>
+        br
+        strong Description:
+        | <span id='subjectDescription'></span>
+        br
+        strong Citations:
+        | <ul id='subjectCitations'></ul>
+      form#formAddCite(name="addcitation",method="post",action="/addcitation")
+        input#inputId(type="hidden", name="subjectId")
+        input#inputUrl(type="text", placeholder="citation url", name="url")
+        button#submitCite(type="submit") add
+
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+    script(src='/javascripts/subjectlist.js')

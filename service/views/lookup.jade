@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= title
+
+  #wrapper
+    #pageInfo
+      h2 Page Information
+      p
+        strong Name:
+        | <span id='pageUrl'></span>
+        br
+        strong Status:
+        | <span id='pageStatus'></span>
+        br
+        strong Main Story:
+        | <span id='pageStory'></span>
+    // ADD USER
+    h2 Lookup url
+    #lookup
+      fieldset
+        input#inputUrl(type='text', placeholder='http://sample.com/article')
+        br
+        button#btnLookup Lookup
+  script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+  script(src='/javascripts/lookup.js')

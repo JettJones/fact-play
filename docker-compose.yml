@@ -1,0 +1,18 @@
+version: '2'
+services:
+  node:
+    image: node:latest
+    ports:
+      - '8081:8081'
+    volumes:
+      - './service:/node-proj'
+    working_dir: '/node-proj'
+    environment:
+      - PORT=8081
+      - env=development
+    command: bash
+    tty: true
+  mongo:
+    image: mongo:latest
+    volumes:
+      - './data:/data'
