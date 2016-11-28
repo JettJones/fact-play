@@ -7,7 +7,16 @@ var bodyParser = require('body-parser');
 
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('mongo:27017/check');
+
+function connectMongo() {
+    var userString = ''
+    if (process.env.MONGODB_USER && process.env.MONGODB_PASSWORD) {
+	userString = process.env.MONGODB_USER + ':' + process.env.MONGODB_PASSWORD + '@';
+    }
+    return monk(userString + 'mongo:27017/check');
+}
+
+var db = connectMongo();
 var app = express();
 
 // Tutorial sections
