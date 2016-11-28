@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    h1= 'Recent Urls'
+    #pagelist
+      table
+        thead
+          th Title
+          th Url
+          th Count
+          th Date
+        tbody
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+    script(src='/javascripts/pagelist.js')

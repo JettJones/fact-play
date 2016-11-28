@@ -6,8 +6,18 @@ const util = require('util');
 router.get('/', function(req, res) {
     var db = req.db;
     var collection = db.get('subjects')
-    collection.find({},{},function(err, docs){
-	res.json(docs);
+    console.log(util.inspect(req.query))
+    var query = {}
+    var title = req.query.title
+    if (title) {
+	query = {title: { $regex: title, $options: 'i'}}
+    }
+    collection.find(query,{},function(err, docs){
+	if (err) {
+	    res.json({msg: err});
+	} else {
+	    res.json(docs);
+	}
     });
 });
 
@@ -25,7 +35,7 @@ router.get('/:id', function(req, res) {
     var db = req.db;
     var collection = db.get('subjects');
     var id = req.params.id;
-    collection.findOne({id:id},{},function(err, docs){
+    collection.findOne({_id:id},{},function(err, docs){
         res.send((err === null) ? docs : { msg: err });
     });
 });

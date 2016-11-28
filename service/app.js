@@ -18,6 +18,7 @@ var lookup = require('./routes/lookup');
 var entry = require('./routes/entry');
 // API for data entry
 var subject = require('./routes/subject');
+var page = require('./routes/page');
 
 var pageModel = require('./page-model');
 var model = pageModel(db);
@@ -48,6 +49,8 @@ app.use('/', index);
 app.use('/lookup', lookup);
 app.use('/entry', entry);
 app.use('/subjects', subject);
+app.use('/pages', page);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

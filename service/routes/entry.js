@@ -12,4 +12,19 @@ router.get('/subjectlist', function(req, res) {
     });
 });
 
+router.get('/pagelist', function(req, res) {
+    res.render('pagelist', {});
+});
+
+router.get('/linkpage/:id', function(req, res) {
+    var db = req.db;
+    var collection = db.get('pagelist');
+    var id = req.params.id;
+    collection.findOne({_id:id},{},function(err, doc){
+	console.log(doc);
+	res.render('linkpage', doc);
+    });
+});
+
+
 module.exports = router;

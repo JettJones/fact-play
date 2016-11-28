@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    h1= 'Add a subject to a link'
+    strong Id:
+    | <span id='pageId'>#{_id}</span>
+    br
+    strong Title:
+    | #{title}
+    br
+    strong Url:
+    | #{url}
+    br
+    strong Subject:
+    | <span id='subject'>#{subject}</span>
+    br
+    input#inputFilter(type="text", name="filter")
+    button#submitFilter(type="submit") submit
+    h1= 'Subjects'
+    #subjectList
+      table
+        thead
+          th Link
+          th Title
+          th Url
+        tbody
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+    script(src='/javascripts/linkpage.js')
