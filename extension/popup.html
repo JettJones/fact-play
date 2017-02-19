@@ -1,0 +1,20 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+	<head>
+		<title>fact-play Popup</title>
+		<script src="ladda/spin.min.js"></script>
+		<script src="ladda/ladda.min.js"></script>
+		<script src="myScript.js"></script>
+		<script>
+			Ladda.bind('.ladda-button', {timeout:2000} );
+		</script>
+	</head>
+	<body>
+		this extension is active
+	</body>
+</html>
